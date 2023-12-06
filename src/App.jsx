@@ -54,9 +54,22 @@ const App = () => {
             );
           })}
           <button> submit</button>
+          <button onClick={() => back()}>Back</button>
         </div>
       </form>
     );
+  };
+
+  const back = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex((prev) => prev - 1);
+    } else setCurrentQuestionIndex(0);
+  };
+
+  const reset = () => {
+    setCurrentQuestionIndex(0);
+    setSelectedAnswer('');
+    setScore(0);
   };
 
   const ScoreScreen = () => {
@@ -65,6 +78,8 @@ const App = () => {
     return (
       <>
         Your Score Is {score}, You Got {numberOfWrongAnswers} Questions Wrong{' '}
+        <button onClick={() => reset()}>Reset</button>
+        <button onClick={() => back()}>Back</button>
       </>
     );
   };
